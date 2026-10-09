@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hello, pricing!</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px 16px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.5;
+      color: #1f2937;
+      background: #f3f4f6;
+    }
+    main { max-width: 800px; margin: 0 auto; }
+    h1 { margin: 0; font-size: 2rem; }
+    .author { margin: 4px 0 24px; color: #6b7280; }
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    th, td { padding: 12px; text-align: left; vertical-align: top; }
+    thead th { background: #2563eb; color: #fff; }
+    tbody tr + tr td { border-top: 1px solid #e5e7eb; }
+    .price { font-weight: 700; font-size: 1.1rem; white-space: nowrap; }
+    ul { margin: 0; padding-left: 18px; }
+    @media (max-width: 560px) {
+      thead { display: none; }
+      table, tbody, tr, td { display: block; width: 100%; }
+      tr + tr { border-top: 8px solid #f3f4f6; }
+      td[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #6b7280;
+      }
+      tbody tr + tr td { border-top: none; }
+      td:first-child { background: #2563eb; color: #fff; font-weight: 700; font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Hello, pricing!</h1>
+    <p class="author">By Leon</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Plan</th><th>Price</th><th>Features</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Free</td>
+            <td class="price" data-label="Price">€0 / month</td>
+            <td data-label="Features">
+              <ul>
+                <li>1 project</li>
+                <li>Basic reports</li>
+                <li>Community support</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>Basic</td>
+            <td class="price" data-label="Price">€9 / month</td>
+            <td data-label="Features">
+              <ul>
+                <li>10 projects</li>
+                <li>Advanced reports</li>
+                <li>Email support</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>Pro</td>
+            <td class="price" data-label="Price">€29 / month</td>
+            <td data-label="Features">
+              <ul>
+                <li>Unlimited projects</li>
+                <li>Custom dashboards</li>
+                <li>Priority support</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+</html>
