@@ -154,7 +154,7 @@
   <div class="wrap">
     <h2>Pricing</h2>
     <p class="lead">Pay only for the minutes you ride, or ride all month for one price.</p>
-    <p>Riding in July or August between 10:00 and 16:00? The Summer Peak Ride price applies to every ride that starts then, and passes are not valid.</p>
+    <p>Riding in July or August between 10:00 and 16:00? The Summer Peak Ride price applies to every ride that starts then, and the Monthly Pass is not valid.</p>
     <div class="offers">
       <div class="offer">
         <h3>Summer Peak Ride</h3>
@@ -281,7 +281,7 @@ document.getElementById("calc-btn").addEventListener("click", function () {
     html += "<ul>" + opts.slice(1).map(function (o) { return "<li>" + o.n + ": " + euro(o.c) + " per month</li>"; }).join("") + "</ul>";
     html += "<p>You save " + euro(opts[1].c - opts[0].c) + " compared with " + opts[1].n + "</p>";
   }
-  if (peak) html += "<p>In the peak window only the Summer Peak Ride applies; passes are not valid.</p>";
+  if (peak) html += "<p>In the peak window only the Summer Peak Ride applies.</p>";
   else if (mins > 30) html += "<p>Passes cover rides of up to 30 minutes.</p>";
   out.innerHTML = html;
 });
