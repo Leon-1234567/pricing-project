@@ -40,6 +40,14 @@
   .offer p { margin: 0 0 12px; font-size: 1rem; }
   .offer .price { font-size: 2rem; font-weight: 700; color: var(--brand); line-height: 1.1; margin-bottom: 4px; }
   .offer .unit { color: var(--muted); }
+  .offer .note { font-size: 0.875rem; color: var(--muted); }
+  .offer .rate { font-size: 0.875rem; font-weight: 700; color: var(--brand); }
+  .offer .rate:empty { display: none; }
+  @media (min-width: 1001px) {
+    .offer { display: grid; grid-row: span 8; grid-template-rows: subgrid; row-gap: 0; }
+    .offer .rate:empty { display: block; }
+    .offer .button { margin-top: 0; }
+  }
   .offer .button { margin-top: auto; text-align: center; padding: 8px 16px; }
   .offer.recommended { border: 2px solid var(--brand); }
   .badge { align-self: flex-start; background: var(--brand); color: #fff; font-size: 0.875rem; font-weight: 600; padding: 2px 10px; border-radius: 4px; margin-bottom: 12px; }
@@ -146,42 +154,50 @@
   <div class="wrap">
     <h2>Pricing</h2>
     <p class="lead">Pay only for the minutes you ride, or ride all month for one price.</p>
+    <p>Riding in July or August between 10:00 and 16:00? The Summer Peak Ride price applies to every ride that starts then, and passes are not valid.</p>
     <div class="offers">
       <div class="offer">
         <h3>Summer Peak Ride</h3>
+        <p class="note">July–August, 10:00–16:00</p>
         <p class="price">€8.50</p>
-        <p class="unit">per 30 minutes, billed pro rata by the minute</p>
-        <p><strong>For:</strong> everyone who rides from July to August between 10:00 and 16:00, mostly tourists</p>
+        <p class="unit">per 30 minutes</p>
+        <p class="rate">Billed per minute (~€0.28/min)</p>
+        <p><strong>For:</strong> everyone who rides from July to August between 10:00 and 16:00</p>
         <p><strong>Included:</strong> a ride on an electric bike, price applies to rides starting in July–August, 10:00–16:00</p>
         <a class="button" href="#contact">Choose Summer Peak Ride</a>
       </div>
       <div class="offer">
         <h3>Standard Ride</h3>
-        <p class="price">€2.80</p>
-        <p class="unit">per 15 minutes, billed pro rata by the minute (a 10-minute ride costs €1.87)</p>
+        <p class="note">All other times</p>
+        <p class="price">€5.60</p>
+        <p class="unit">per 30 minutes</p>
+        <p class="rate">Billed per minute (~€0.19/min)</p>
         <p><strong>For:</strong> everyone who rides at all other times</p>
         <p><strong>Included:</strong> a ride on an electric bike, outside the July–August 10:00–16:00 peak window</p>
         <a class="button" href="#contact">Choose Standard Ride</a>
       </div>
-      <div class="offer recommended">
-        <span class="badge">Recommended</span>
+      <div class="offer">
         <h3>Monthly Pass</h3>
+        <p class="note">Not valid July–August, 10:00–16:00</p>
         <p class="price">€24.99</p>
         <p class="unit">per month</p>
+        <p class="rate" aria-hidden="true"></p>
         <p><strong>For:</strong> regular riders, for example people who commute to work</p>
         <p><strong>Included:</strong> unlimited rides of up to 30 minutes each, not valid in the July–August 10:00–16:00 peak window</p>
         <a class="button" href="#contact">Choose Monthly Pass</a>
       </div>
       <div class="offer">
         <h3>Student Pass</h3>
+        <p class="note">October–June, with e-student ID</p>
         <p class="price">€12.99</p>
         <p class="unit">per month</p>
+        <p class="rate" aria-hidden="true"></p>
         <p><strong>For:</strong> students with a valid e-student ID, October to June</p>
-        <p><strong>Included:</strong> unlimited rides of up to 30 minutes each, student status confirmed in the app, not valid in the July–August 10:00–16:00 peak window</p>
+        <p><strong>Included:</strong> unlimited rides of up to 30 minutes each, student status confirmed in the app</p>
         <a class="button" href="#contact">Choose Student Pass</a>
       </div>
     </div>
-    <p class="small">Peak window: July–August, 10:00–16:00, the same price for everyone; passes are not valid in the peak window; each pass ride is limited to 30 minutes; the Student Pass needs a valid e-student ID confirmed in the app; all prices are also shown at every station. All prices are final consumer prices in euros.</p>
+    <p class="small">Peak window: July–August, 10:00–16:00, the same price for everyone; the Monthly Pass is not valid in the peak window; each pass ride is limited to 30 minutes; the Student Pass needs a valid e-student ID confirmed in the app; all prices are also shown at every station. All prices are final consumer prices in euros. The price depends on the time a ride starts.</p>
     <div class="calc">
       <h3>Price calculator</h3>
       <div class="field">
@@ -201,7 +217,7 @@
         <input id="mins" type="text" inputmode="numeric">
       </div>
       <label class="check"><input id="student" type="checkbox"> I have a valid e-student ID</label>
-      <button class="button" id="calc-btn" type="button">Find my best option</button>
+      <button class="button" id="calc-btn" type="button">Find my cheapest option</button>
       <div id="result" aria-live="polite"></div>
     </div>
   </div>
@@ -212,15 +228,15 @@
     <h2>FAQ</h2>
     <div>
       <h3>How much does a ride cost?</h3>
-      <p>A Standard Ride costs €2.80 per 15 minutes, billed pro rata by the minute, so a 10-minute ride costs €1.87. From July to August, for rides starting between 10:00 and 16:00, the Summer Peak Ride costs €8.50 per 30 minutes, billed the same way.</p>
+      <p>At standard times a ride costs €5.60 per 30 minutes (€2.80 per 15 minutes). In July and August, for rides starting between 10:00 and 16:00, it costs €8.50 per 30 minutes. Rides are billed per minute: a 10-minute ride costs €1.87 at standard times and €2.83 in the peak window.</p>
     </div>
     <div>
       <h3>Why do rides cost more in July and August from 10:00 to 16:00?</h3>
-      <p>In this window the bikes are in very high demand and our fleet is limited. The peak window is fixed, the same for everyone, and the Standard Ride price applies before 10:00 and after 16:00.</p>
+      <p>In this window the bikes are in very high demand and our fleet is limited. The window is fixed and the same for everyone. The price is set when you unlock the bike and stays the same for the whole ride: a ride that starts at 9:59 or at 16:00 costs the Standard Ride price, a ride that starts between 10:00 and 15:59 the Summer Peak Ride price.</p>
     </div>
     <div>
       <h3>What do the passes include?</h3>
-      <p>The Monthly Pass (€24.99 per month) and the Student Pass (€12.99 per month) include unlimited rides of up to 30 minutes each. Passes are not valid in the peak window; a ride that starts then is charged at the Summer Peak Ride price.</p>
+      <p>The Monthly Pass (€24.99 per month) and the Student Pass (€12.99 per month) include unlimited rides of up to 30 minutes each. The Monthly Pass is not valid in the peak window: a ride that starts then is charged at the Summer Peak Ride price.</p>
     </div>
     <div>
       <h3>Who can get the Student Pass?</h3>
@@ -260,7 +276,7 @@ document.getElementById("calc-btn").addEventListener("click", function () {
   if (when === "off" && mins <= 30 && document.getElementById("student").checked) opts.push({ n: "Student Pass", c: 12.99 });
   opts.forEach(function (o) { o.c = Math.round(o.c * 100) / 100; });
   opts.sort(function (a, b) { return a.c - b.c; });
-  var html = "<h4>Your best option</h4><p class=\"best\">" + opts[0].n + ": " + euro(opts[0].c) + " per month</p>";
+  var html = "<h4>Your cheapest option</h4><p class=\"best\">" + opts[0].n + ": " + euro(opts[0].c) + " per month</p>";
   if (opts.length > 1) {
     html += "<ul>" + opts.slice(1).map(function (o) { return "<li>" + o.n + ": " + euro(o.c) + " per month</li>"; }).join("") + "</ul>";
     html += "<p>You save " + euro(opts[1].c - opts[0].c) + " compared with " + opts[1].n + "</p>";
